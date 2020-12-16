@@ -1,6 +1,9 @@
 var $dataViews=document.querySelectorAll("div[data-view]")
 
-var $favoritesHeader=document.querySelector("a[data-view='favorites']")
+var $favHeader=document.querySelector("a[data-view='favorites']")
+var $favList=document.querySelector("#fav-list")
+
+var userAddedList=JSON.parse(localStorage.getItem("addedList"))
 
 function swap(view){
   if (view==="home"){
@@ -44,10 +47,46 @@ document.addEventListener("click",function(event){
     getFamousQuote()
   } else if (event.target.matches("a[data-view='favorites']")){
     swap("favorites")
-    $favoritesHeader.className="header"
+    $favHeader.className="header"
+    var $h2 = document.querySelector("h2")
+    if ($h2.getAttribute("id")==="advice"){
+      var content = new fav("advice")
+      content.text=$h2.textContent
+
+      $favList.appendChild(renderLi(content.text,content.author))
+
+      addedList.favorites.push(content)
+      localStorage.setItem("addedList",JSON.stringify(addedList))
+    } else if ($h2.getAttribute("id")==="quote"){
+      var content=new fav("quote")
+      content.text=$h2.textContent
+      var $h3 = document.querySelector("#author")
+      content.author= $h3.textContent
+
+      $favList.appendChild(renderLi(content.text,content.author))
+
+      addedList.favorites.push(content)
+      localStorage.setItem("addedList",JSON.stringify(addedList))
+    }
   }
 })
 
 document.addEventListener("DOMContentLoaded", function(event){
+  if (userAddedList!==null){
+    addedList=userAddedList
+    swap("home")
+    $favHeader.className="header"
+    for (var i=0;i<userAddedList.favorites.length;i++){
+      var text=userAddedList.favorites[i].text
+      var author=userAddedList.favorites[i].author
+      $favList.appendChild(renderLi(text,author))
+    }
+  }
   swap("home")
 })
+
+function renderLi (fav,author){
+  var $li = document.createElement("li")
+  $li.textContent=fav + " "+author
+  return $li
+}

@@ -24,6 +24,7 @@ function getFamousQuote(){
     $h2.textContent=data.data[0].quoteText
     $apiData.appendChild($h2)
     var $h3=document.createElement("h3")
+    $h3.setAttribute("id","author")
     $h3.textContent="-"+data.data[0].quoteAuthor
     $apiData.appendChild($h3)
   })
@@ -55,4 +56,15 @@ function getActivity(){
     $apiData.appendChild($h2)
   })
   xhr.send()
+}
+
+function fav(type){
+  this.type=type
+  this.text=null
+  this.author=""
+}
+
+var addedList= {
+  favorites:[],
+  toDo:[]
 }
