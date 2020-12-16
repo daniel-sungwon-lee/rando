@@ -48,25 +48,27 @@ document.addEventListener("click",function(event){
   } else if (event.target.matches("a[data-view='favorites']")){
     swap("favorites")
     $favHeader.className="header"
-    var $h2 = document.querySelector("h2")
-    if ($h2.getAttribute("id")==="advice"){
-      var content = new fav("advice")
-      content.text=$h2.textContent
+    if (event.target.matches("#add-button")){
+      var $h2 = document.querySelector("h2")
+      if ($h2.getAttribute("id")==="advice"){
+        var content = new fav("advice")
+        content.text=$h2.textContent
 
-      $favList.appendChild(renderLi(content.text,content.author))
+        $favList.appendChild(renderLi(content.text,content.author))
 
-      addedList.favorites.push(content)
-      localStorage.setItem("addedList",JSON.stringify(addedList))
-    } else if ($h2.getAttribute("id")==="quote"){
-      var content=new fav("quote")
-      content.text=$h2.textContent
-      var $h3 = document.querySelector("#author")
-      content.author= $h3.textContent
+        addedList.favorites.push(content)
+        localStorage.setItem("addedList",JSON.stringify(addedList))
+      } else if ($h2.getAttribute("id")==="quote"){
+        var content=new fav("quote")
+        content.text=$h2.textContent
+        var $h3 = document.querySelector("#author")
+        content.author= $h3.textContent
 
-      $favList.appendChild(renderLi(content.text,content.author))
+        $favList.appendChild(renderLi(content.text,content.author))
 
-      addedList.favorites.push(content)
-      localStorage.setItem("addedList",JSON.stringify(addedList))
+        addedList.favorites.push(content)
+        localStorage.setItem("addedList",JSON.stringify(addedList))
+      }
     }
   }
 })
