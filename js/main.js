@@ -25,10 +25,13 @@ document.addEventListener("click",function(event){
     swap("random-data")
     getAdvice()
   } else if (event.target.matches("a[data-view='home']")){
-    if ($apiData.firstChild){
+    while ($apiData.firstChild){
       $apiData.firstChild.remove()
     }
     swap("home")
+  } else if (event.target.matches("#quote-button")){
+    swap("random-data")
+    getFamousQuote()
   }
 })
 

@@ -11,6 +11,6 @@ header {
   display: none;
 }
 .buttons{
-  margin: auto;
+  margin-left: 2rem;
   width: 60%;
 }

@@ -23,6 +23,9 @@ function getFamousQuote(){
     $h2.setAttribute("id","quote")
     $h2.textContent=data.data[0].quoteText
     $apiData.appendChild($h2)
+    var $h3=document.createElement("h3")
+    $h3.textContent="-"+data.data[0].quoteAuthor
+    $apiData.appendChild($h3)
   })
   xhr.send()
 }
