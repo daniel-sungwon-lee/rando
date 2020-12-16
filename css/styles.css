@@ -1,6 +1,14 @@
-header {
-  background-color: #D6EDFF;
-  height: 75px;
+.header{
+  text-decoration: none;
+  font-family: "Yantramanav",sans-serif;
+  text-transform: uppercase;
+  color: black;
+  margin-left: 2rem;
+  font-size: 24px;
+  font-weight: 600;
+}
+.header:active{
+  color: white;
 }
 h1{
   font-family: "Yantramanav",sans-serif;

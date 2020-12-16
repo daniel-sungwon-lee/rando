@@ -1,10 +1,5 @@
 var $dataViews=document.querySelectorAll("div[data-view]")
 
-var $adviceButton=document.querySelector("#advice-button")
-var $quoteButton=document.querySelector("#quote-button")
-var $jokeButton=document.querySelector("#joke-button")
-var $activityButton=document.querySelector("#activity-button")
-
 function swap(view){
   if (view==="home"){
     for (var i =0;i<$dataViews.length;i++){
@@ -26,9 +21,14 @@ function swap(view){
 }
 
 document.addEventListener("click",function(event){
-  if (event.target===$adviceButton){
+  if (event.target.matches("#advice-button")){
     swap("random-data")
     getAdvice()
+  } else if (event.target.matches("a[data-view='home']")){
+    if ($apiData.firstChild){
+      $apiData.firstChild.remove()
+    }
+    swap("home")
   }
 })
 
