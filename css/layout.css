@@ -1,0 +1,16 @@
+main{
+  margin-bottom: 4rem;
+}
+header {
+  background-color: #D6EDFF;
+  height: 75px;
+  display: flex;
+  align-items: center;
+}
+.hidden{
+  display: none;
+}
+.buttons{
+  margin: auto;
+  width: 60%;
+}
