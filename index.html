@@ -7,11 +7,26 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Yantramanav:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
+    <div></div>
   </header>
   <main>
+    <div class="home hidden" data-view="home">
+      <h1>Home</h1>
+      <div class="buttons">
+        <button id="advice-button">Random Advice</button>
+        <button id="quote-button">Random Quote</button>
+        <button id="joke-button">Random Dad Joke</button>
+        <button id="activity-button">Random Activity</button>
+      </div>
+    </div>
+    <div class="random-data" data-view="random-data">
+      <div class="api-data" id="api-data"></div>
+    </div>
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

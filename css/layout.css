@@ -1,0 +1,10 @@
+main{
+  margin-bottom: 4rem;
+}
+.hidden{
+  display: none;
+}
+.buttons{
+  margin: auto;
+  width: 60%;
+}
