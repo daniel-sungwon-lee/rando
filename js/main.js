@@ -128,7 +128,16 @@ document.addEventListener("click",function(event){
     swap("to-do")
     $toDoHeader.className="header"
     if (event.target.matches("#add-button")){
+      var $h2=document.querySelector("h2")
+      if ($h2.getAttribute("id")==="activity"){
+        var content=new fav("activity")
+        content.text=$h2.textContent
 
+        $toDoList.appendChild(renderLi(content.text,content.author))
+
+        addedList.toDo.push(content)
+        localStorage.setItem("addedList",JSON.stringify(addedList))
+      }
     }
   }
 })
@@ -144,12 +153,17 @@ document.addEventListener("DOMContentLoaded", function(event){
       var author=userAddedList.favorites[i].author
       $favList.appendChild(renderLi(text,author))
     }
+    for (var i=0;i<userAddedList.toDo.length;i++){
+      var text = userAddedList.toDo[i].text
+      var author=userAddedList.toDo[i].author
+      $toDoList.appendChild(renderLi(text,author))
+    }
   }
   swap("home")
 })
 
-function renderLi (fav,author){
+function renderLi (text,author){
   var $li = document.createElement("li")
-  $li.textContent=fav + " "+author
+  $li.textContent=text + " "+author
   return $li
 }
