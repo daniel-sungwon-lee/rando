@@ -160,7 +160,13 @@ document.addEventListener("DOMContentLoaded", function(event){
     }
     var $checkbox=document.querySelectorAll(".checkbox")
     for (var i =0;i<$checkbox.length;i++){
-      $checkbox[i].checked=userAddedList.toDos[i].isComplete
+      var checkbox=$checkbox[i]
+      var checkboxId=checkbox.getAttribute("id")
+      for (var i=0;i<userAddedList.toDos.length;i++){
+        if (checkboxId===userAddedList.toDos[i].text){
+          checkbox.checked=userAddedList.toDos[i].isComplete
+        }
+      }
     }
   }
   swap("home")
