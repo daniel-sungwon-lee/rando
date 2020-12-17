@@ -45,6 +45,9 @@ document.addEventListener("click",function(event){
   } else if (event.target.matches("#quote-button")){
     swap("random-data")
     getFamousQuote()
+  } else if (event.target.matches("#joke-button")){
+    swap("random-data")
+    getDadJoke()
   } else if (event.target.matches("a[data-view='favorites']")){
     swap("favorites")
     $favHeader.className="header"
@@ -63,6 +66,14 @@ document.addEventListener("click",function(event){
         content.text=$h2.textContent
         var $h3 = document.querySelector("#author")
         content.author= $h3.textContent
+
+        $favList.appendChild(renderLi(content.text,content.author))
+
+        addedList.favorites.push(content)
+        localStorage.setItem("addedList",JSON.stringify(addedList))
+      } else if ($h2.getAttribute("id")==="joke"){
+        var content = new fav("joke")
+        content.text=$h2.textContent
 
         $favList.appendChild(renderLi(content.text,content.author))
 
