@@ -26,9 +26,13 @@ header {
   max-height: 45%;
 }
 li{
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .check-li{
   display: flex;
   align-items: baseline;
+}
+p{
+  line-height: 1.6;
+  margin: 5px 0;
 }

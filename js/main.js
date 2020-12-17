@@ -163,7 +163,15 @@ document.addEventListener("DOMContentLoaded", function(event){
 
 function renderLi (text,author){
   var $li = document.createElement("li")
-  $li.textContent=text + " "+author
+
+  var $pText=document.createElement("p")
+  $pText.textContent=text
+  $li.appendChild($pText)
+
+  var $pAuthor=document.createElement("p")
+  $pAuthor.textContent=author
+  $li.appendChild($pAuthor)
+
   return $li
 }
 
