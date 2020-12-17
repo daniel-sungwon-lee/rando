@@ -64,7 +64,13 @@ function fav(type){
   this.author=""
 }
 
+function todo(type){
+  this.type=type
+  this.text=null
+  this.isComplete=null
+}
+
 var addedList= {
   favorites:[],
-  toDo:[]
+  toDos:[]
 }
