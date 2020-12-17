@@ -1,7 +1,11 @@
 var $dataViews=document.querySelectorAll("div[data-view]")
+var $addButtons=document.querySelectorAll("#add-button")
 
 var $favHeader=document.querySelector("a[data-view='favorites']")
 var $favList=document.querySelector("#fav-list")
+
+var $toDoHeader=document.querySelector("a[data-view='to-do']")
+var $toDoList=document.querySelector("#to-do-list")
 
 var userAddedList=JSON.parse(localStorage.getItem("addedList"))
 
@@ -30,6 +34,14 @@ function swap(view){
         $dataViews[i].className = "hidden"
       }
     }
+  } else if (view==="to-do"){
+    for (var i = 0; i < $dataViews.length; i++) {
+      if ($dataViews[i].getAttribute("data-view") === view) {
+        $dataViews[i].className = view
+      } else {
+        $dataViews[i].className = "hidden"
+      }
+    }
   }
 }
 
@@ -37,6 +49,13 @@ document.addEventListener("click",function(event){
   if (event.target.matches("#advice-button")){
     swap("random-data")
     getAdvice()
+    for (var i = 0; i < $addButtons.length; i++) {
+      if ($addButtons[i].matches("a[data-view='favorites']")) {
+        $addButtons[i].className = "add-button"
+      } else {
+        $addButtons[i].className = "add-button hidden"
+      }
+    }
   } else if (event.target.matches("a[data-view='home']")){
     while ($apiData.firstChild){
       $apiData.firstChild.remove()
@@ -45,9 +64,33 @@ document.addEventListener("click",function(event){
   } else if (event.target.matches("#quote-button")){
     swap("random-data")
     getFamousQuote()
+    for (var i =0;i<$addButtons.length;i++){
+      if ($addButtons[i].matches("a[data-view='favorites']")){
+        $addButtons[i].className="add-button"
+      }else {
+        $addButtons[i].className="add-button hidden"
+      }
+    }
   } else if (event.target.matches("#joke-button")){
     swap("random-data")
     getDadJoke()
+    for (var i = 0; i < $addButtons.length; i++) {
+      if ($addButtons[i].matches("a[data-view='favorites']")) {
+        $addButtons[i].className = "add-button"
+      } else {
+        $addButtons[i].className = "add-button hidden"
+      }
+    }
+  } else if (event.target.matches("#activity-button")){
+    swap("random-data")
+    getActivity()
+    for (var i = 0; i < $addButtons.length; i++) {
+      if ($addButtons[i].matches("a[data-view='to-do']")) {
+        $addButtons[i].className = "add-button"
+      } else {
+        $addButtons[i].className = "add-button hidden"
+      }
+    }
   } else if (event.target.matches("a[data-view='favorites']")){
     swap("favorites")
     $favHeader.className="header"
@@ -81,6 +124,12 @@ document.addEventListener("click",function(event){
         localStorage.setItem("addedList",JSON.stringify(addedList))
       }
     }
+  } else if (event.target.matches("a[data-view='to-do']")){
+    swap("to-do")
+    $toDoHeader.className="header"
+    if (event.target.matches("#add-button")){
+
+    }
   }
 })
 
@@ -89,6 +138,7 @@ document.addEventListener("DOMContentLoaded", function(event){
     addedList=userAddedList
     swap("home")
     $favHeader.className="header"
+    $toDoHeader.className="header"
     for (var i=0;i<userAddedList.favorites.length;i++){
       var text=userAddedList.favorites[i].text
       var author=userAddedList.favorites[i].author
