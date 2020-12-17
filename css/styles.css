@@ -83,10 +83,7 @@ ul{
 .to-do-list{
   list-style:none;
   padding-left: 2rem;
-}
-.check-li{
-  display: flex;
-  align-items: baseline;
+  margin-right: 2rem;
 }
 .label{
   margin-left: 1rem;

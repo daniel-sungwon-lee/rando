@@ -28,3 +28,7 @@ header {
 li{
   margin-bottom: 1rem;
 }
+.check-li{
+  display: flex;
+  align-items: baseline;
+}
