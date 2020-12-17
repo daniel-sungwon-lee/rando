@@ -24,3 +24,6 @@ header {
   width: 70%;
   max-height: 45%;
 }
+li{
+  margin-bottom: 1rem;
+}
