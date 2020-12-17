@@ -130,12 +130,13 @@ document.addEventListener("click",function(event){
     if (event.target.matches("#add-button")){
       var $h2=document.querySelector("h2")
       if ($h2.getAttribute("id")==="activity"){
-        var content=new fav("activity")
+        var content=new todo("activity")
         content.text=$h2.textContent
+        content.isComplete=false
 
         $toDoList.appendChild(renderCheckLi(content.text))
 
-        addedList.toDo.push(content)
+        addedList.toDos.push(content)
         localStorage.setItem("addedList",JSON.stringify(addedList))
       }
     }
@@ -153,12 +154,26 @@ document.addEventListener("DOMContentLoaded", function(event){
       var author=userAddedList.favorites[i].author
       $favList.appendChild(renderLi(text,author))
     }
-    for (var i=0;i<userAddedList.toDo.length;i++){
-      var text = userAddedList.toDo[i].text
+    for (var i=0;i<userAddedList.toDos.length;i++){
+      var text = userAddedList.toDos[i].text
       $toDoList.appendChild(renderCheckLi(text))
+    }
+    var $checkbox=document.querySelectorAll(".checkbox")
+    for (var i =0;i<$checkbox.length;i++){
+      $checkbox[i].checked=userAddedList.toDos[i].isComplete
     }
   }
   swap("home")
+})
+
+$toDoList.addEventListener("change",function(event){
+  var todoText=event.target.getAttribute("id")
+  for (var i=0;i<addedList.toDos.length;i++){
+    if (addedList.toDos[i].text===todoText){
+      addedList.toDos[i].isComplete=event.target.checked
+      localStorage.setItem("addedList",JSON.stringify(addedList))
+    }
+  }
 })
 
 function renderLi (text,author){
@@ -182,6 +197,7 @@ function renderCheckLi (text){
   var $checkbox=document.createElement("input")
   $checkbox.setAttribute("type","checkbox")
   $checkbox.setAttribute("id",text)
+  $checkbox.setAttribute("class","checkbox")
   $li.appendChild($checkbox)
 
   var $label=document.createElement("label")
