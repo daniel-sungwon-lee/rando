@@ -75,8 +75,32 @@ h3 {
   color:white;
 }
 ul{
-  font-size: 19px;
+  font-size: 21px;
   font-family: 'Yantramanav';
   text-transform: uppercase;
   margin-right: 1rem;
+}
+.to-do-list{
+  list-style:none;
+  padding-left: 2rem;
+}
+.check-li{
+  display: flex;
+  align-items: baseline;
+}
+.label{
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+input[type="checkbox"]{
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+input[type="checkbox"]:checked + label{
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+input[type="checkbox"]:checked{
+  opacity: 0.3;
 }

@@ -133,7 +133,7 @@ document.addEventListener("click",function(event){
         var content=new fav("activity")
         content.text=$h2.textContent
 
-        $toDoList.appendChild(renderLi(content.text,content.author))
+        $toDoList.appendChild(renderCheckLi(content.text))
 
         addedList.toDo.push(content)
         localStorage.setItem("addedList",JSON.stringify(addedList))
@@ -155,8 +155,7 @@ document.addEventListener("DOMContentLoaded", function(event){
     }
     for (var i=0;i<userAddedList.toDo.length;i++){
       var text = userAddedList.toDo[i].text
-      var author=userAddedList.toDo[i].author
-      $toDoList.appendChild(renderLi(text,author))
+      $toDoList.appendChild(renderCheckLi(text))
     }
   }
   swap("home")
@@ -165,5 +164,23 @@ document.addEventListener("DOMContentLoaded", function(event){
 function renderLi (text,author){
   var $li = document.createElement("li")
   $li.textContent=text + " "+author
+  return $li
+}
+
+function renderCheckLi (text){
+  var $li = document.createElement("li")
+  $li.setAttribute("class","check-li")
+
+  var $checkbox=document.createElement("input")
+  $checkbox.setAttribute("type","checkbox")
+  $checkbox.setAttribute("id",text)
+  $li.appendChild($checkbox)
+
+  var $label=document.createElement("label")
+  $label.setAttribute("for",text)
+  $label.setAttribute("class","label")
+  $label.textContent=text
+  $li.appendChild($label)
+
   return $li
 }
