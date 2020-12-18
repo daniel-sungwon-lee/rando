@@ -146,10 +146,38 @@ document.addEventListener("click",function(event){
     }
   } else if (event.target.matches("#delete")){
     $main.appendChild(renderModal())
+    var clickedList=event.target.closest("li")
+
+    var $overlay=document.querySelector("#overlay")
+    $overlay.addEventListener("click",function(event){
+      if (event.target.matches("#delete-confirm")){
+        var $favLists=document.querySelectorAll("#fav-li")
+        var $checkLists=document.querySelectorAll("#check-li")
+
+        for (var i =0;i<$favLists.length;i++){
+          if (clickedList===$favLists[i]){
+            var text=$favLists[i].getElementsByTagName("p")[0].textContent
+            for (var i=0;i<addedList.favorites.length;i++){
+              if (addedList.favorites[i].text===text){
+                addedList.favorites.splice(i,1)
+                localStorage.setItem("addedList",JSON.stringify(addedList))
+              }
+            }
+          }
+        }
+
+        for (var i=0;i<$checkLists.length;i++){
+          if (clickedList===$checkLists[i]){
+            addedList.toDos.splice(i,1)
+            localStorage.setItem("addedList",JSON.stringify(addedList))
+          }
+        }
+        clickedList.remove()
+        $overlay.remove()
+      }
+    })
   } else if (event.target.matches("#undo")){
     document.querySelector("#overlay").remove()
-  } else if (event.target.matches("#delete-confirm")){
-
   }
 })
 
@@ -201,6 +229,7 @@ $toDoList.addEventListener("change",function(event){
 
 function renderLi (text,author){
   var $li = document.createElement("li")
+  $li.setAttribute("id","fav-li")
 
   var $pDiv=document.createElement("div")
   $li.appendChild($pDiv)
@@ -228,6 +257,7 @@ function renderLi (text,author){
 function renderCheckLi (text){
   var $li = document.createElement("li")
   $li.setAttribute("class","check-li")
+  $li.setAttribute("id","check-li")
 
   var $divLi=document.createElement("div")
   $divLi.setAttribute("class","div-li")
