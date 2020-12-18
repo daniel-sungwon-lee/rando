@@ -146,6 +146,10 @@ document.addEventListener("click",function(event){
     }
   } else if (event.target.matches("#delete")){
     $main.appendChild(renderModal())
+  } else if (event.target.matches("#undo")){
+    document.querySelector("#overlay").remove()
+  } else if (event.target.matches("#delete-confirm")){
+
   }
 })
 
@@ -256,6 +260,7 @@ function renderCheckLi (text){
 function renderModal(){
   var $divOverlay=document.createElement("div")
   $divOverlay.setAttribute("class","overlay")
+  $divOverlay.setAttribute("id","overlay")
 
   var $divModal=document.createElement("div")
   $divModal.setAttribute("class","modal")

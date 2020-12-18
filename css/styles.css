@@ -99,19 +99,26 @@ ul{
   opacity: 0.5;
 }
 .checkbox:checked{
-  opacity: 0.3;
+  opacity: 0.4;
 }
 .fas{
   cursor: pointer;
   color: #adb5bd;
+  transition: all 0.3s ease-out;
 }
 .modal-icon{
   margin: 0 2.5rem 3rem;
   font-size: 26px;
 }
+.fas.fa-trash:hover{
+  color: #ef233c;
+}
 .fas.fa-trash:active{
   color: #ef233c;
 }
-.fas.fas.fa-undo:active{
+.fas.fa-undo:hover{
+  color: #30B08E;
+}
+.fas.fa-undo:active{
   color: #30B08E;
 }
