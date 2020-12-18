@@ -2,7 +2,9 @@ var $dataViews=document.querySelectorAll("div[data-view]")
 var $addButtons=document.querySelectorAll("#add-button")
 
 var $favHeader=document.querySelector("a[data-view='favorites']")
-var $favList=document.querySelector("#fav-list")
+var $adviceList=document.querySelector("#advices")
+var $quoteList=document.querySelector("#quotes")
+var $jokeList=document.querySelector("#jokes")
 
 var $toDoHeader=document.querySelector("a[data-view='to-do']")
 var $toDoList=document.querySelector("#to-do-list")
@@ -100,7 +102,7 @@ document.addEventListener("click",function(event){
         var content = new fav("advice")
         content.text=$h2.textContent
 
-        $favList.appendChild(renderLi(content.text,content.author))
+        $adviceList.appendChild(renderLi(content.text,content.author))
 
         addedList.favorites.push(content)
         localStorage.setItem("addedList",JSON.stringify(addedList))
@@ -110,7 +112,7 @@ document.addEventListener("click",function(event){
         var $h3 = document.querySelector("#author")
         content.author= $h3.textContent
 
-        $favList.appendChild(renderLi(content.text,content.author))
+        $quoteList.appendChild(renderLi(content.text,content.author))
 
         addedList.favorites.push(content)
         localStorage.setItem("addedList",JSON.stringify(addedList))
@@ -118,7 +120,7 @@ document.addEventListener("click",function(event){
         var content = new fav("joke")
         content.text=$h2.textContent
 
-        $favList.appendChild(renderLi(content.text,content.author))
+        $jokeList.appendChild(renderLi(content.text,content.author))
 
         addedList.favorites.push(content)
         localStorage.setItem("addedList",JSON.stringify(addedList))
@@ -149,15 +151,28 @@ document.addEventListener("DOMContentLoaded", function(event){
     swap("home")
     $favHeader.className="header"
     $toDoHeader.className="header"
+
     for (var i=0;i<userAddedList.favorites.length;i++){
-      var text=userAddedList.favorites[i].text
-      var author=userAddedList.favorites[i].author
-      $favList.appendChild(renderLi(text,author))
+      if (userAddedList.favorites[i].type==="advice"){
+        var text=userAddedList.favorites[i].text
+        var author=userAddedList.favorites[i].author
+        $adviceList.appendChild(renderLi(text,author))
+      } else if (userAddedList.favorites[i].type==="quote"){
+        var text = userAddedList.favorites[i].text
+        var author = userAddedList.favorites[i].author
+        $quoteList.appendChild(renderLi(text, author))
+      } else if (userAddedList.favorites[i].type==="joke"){
+        var text = userAddedList.favorites[i].text
+        var author = userAddedList.favorites[i].author
+        $jokeList.appendChild(renderLi(text, author))
+      }
     }
+
     for (var i=0;i<userAddedList.toDos.length;i++){
       var text = userAddedList.toDos[i].text
       $toDoList.appendChild(renderCheckLi(text))
     }
+
     var $checkbox=document.querySelectorAll(".checkbox")
     for (var i =0;i<$checkbox.length;i++){
       $checkbox[i].checked=userAddedList.toDos[i].isComplete
