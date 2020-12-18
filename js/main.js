@@ -194,13 +194,25 @@ $toDoList.addEventListener("change",function(event){
 function renderLi (text,author){
   var $li = document.createElement("li")
 
+  var $pDiv=document.createElement("div")
+  $li.appendChild($pDiv)
+
   var $pText=document.createElement("p")
   $pText.textContent=text
-  $li.appendChild($pText)
+  $pDiv.appendChild($pText)
 
   var $pAuthor=document.createElement("p")
   $pAuthor.textContent=author
-  $li.appendChild($pAuthor)
+  $pDiv.appendChild($pAuthor)
+
+  var $delDiv = document.createElement("div")
+  $delDiv.setAttribute("class", "del-div")
+  $li.appendChild($delDiv)
+
+  var $delete=document.createElement("i")
+  $delete.setAttribute("class","fas fa-trash")
+  $delete.setAttribute("id","delete")
+  $delDiv.appendChild($delete)
 
   return $li
 }
@@ -209,17 +221,30 @@ function renderCheckLi (text){
   var $li = document.createElement("li")
   $li.setAttribute("class","check-li")
 
+  var $divLi=document.createElement("div")
+  $divLi.setAttribute("class","div-li")
+  $li.appendChild($divLi)
+
   var $checkbox=document.createElement("input")
   $checkbox.setAttribute("type","checkbox")
   $checkbox.setAttribute("id",text)
   $checkbox.setAttribute("class","checkbox")
-  $li.appendChild($checkbox)
+  $divLi.appendChild($checkbox)
 
   var $label=document.createElement("label")
   $label.setAttribute("for",text)
   $label.setAttribute("class","label")
   $label.textContent=text
-  $li.appendChild($label)
+  $divLi.appendChild($label)
+
+  var $delDiv=document.createElement("div")
+  $delDiv.setAttribute("class","del-div")
+  $li.appendChild($delDiv)
+
+  var $delete=document.createElement("i")
+  $delete.setAttribute("class","fas fa-trash")
+  $delete.setAttribute("id","delete")
+  $delDiv.appendChild($delete)
 
   return $li
 }

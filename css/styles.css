@@ -78,7 +78,7 @@ ul{
   font-size: 21px;
   font-family: 'Yantramanav';
   text-transform: uppercase;
-  margin-right: 1rem;
+  width: 90%;
 }
 .to-do-list{
   list-style:none;
@@ -100,4 +100,11 @@ ul{
 }
 .checkbox:checked{
   opacity: 0.3;
+}
+.fas.fa-trash{
+  cursor: pointer;
+  color: #adb5bd;
+}
+.fas.fa-trash:active{
+  color: #ef233c;
 }

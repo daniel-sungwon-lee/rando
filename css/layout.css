@@ -1,6 +1,6 @@
 main{
   max-width: 33rem;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
 }
 header {
   background-color: #D6EDFF;
@@ -27,11 +27,16 @@ header {
 }
 li{
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .check-li{
+  margin-bottom: 1.3rem;
+}
+.div-li{
   display: flex;
   align-items: baseline;
-  margin-bottom: 1.3rem;
 }
 p{
   line-height: 1.6;
@@ -40,4 +45,8 @@ p{
 .title{
   text-align: left;
   margin: 2rem 0 1rem;
+}
+.del-div{
+  text-align: right;
+  margin-left: 1rem;
 }
