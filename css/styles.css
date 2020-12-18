@@ -78,7 +78,7 @@ ul{
   font-size: 21px;
   font-family: 'Yantramanav';
   text-transform: uppercase;
-  margin-right: 1rem;
+  width: 90%;
 }
 .to-do-list{
   list-style:none;
@@ -99,5 +99,26 @@ ul{
   opacity: 0.5;
 }
 .checkbox:checked{
-  opacity: 0.3;
+  opacity: 0.4;
+}
+.fas{
+  cursor: pointer;
+  color: #adb5bd;
+  transition: all 0.3s ease-out;
+}
+.modal-icon{
+  margin: 0 2.5rem 3rem;
+  font-size: 26px;
+}
+.fas.fa-trash:hover{
+  color: #ef233c;
+}
+.fas.fa-trash:active{
+  color: #ef233c;
+}
+.fas.fa-undo:hover{
+  color: #30B08E;
+}
+.fas.fa-undo:active{
+  color: #30B08E;
 }

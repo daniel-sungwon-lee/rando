@@ -1,6 +1,6 @@
 main{
-  max-width: 33rem;
-  margin-bottom: 3rem;
+  max-width: 50rem;
+  margin-bottom: 5rem;
 }
 header {
   background-color: #D6EDFF;
@@ -27,11 +27,16 @@ header {
 }
 li{
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .check-li{
+  margin-bottom: 1.3rem;
+}
+.div-li{
   display: flex;
   align-items: baseline;
-  margin-bottom: 1.3rem;
 }
 p{
   line-height: 1.6;
@@ -40,4 +45,31 @@ p{
 .title{
   text-align: left;
   margin: 2rem 0 1rem;
+}
+.del-div{
+  text-align: right;
+  margin-left: 1rem;
+}
+.overlay{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(214,237,255,0.8);
+}
+.modal{
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 80%;
+  border-radius: 30px;
+}
+.modal-message{
+  margin-bottom: 2rem;
+}
+.modal-icons{
+  text-align: center;
 }

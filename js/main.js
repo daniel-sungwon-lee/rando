@@ -1,3 +1,5 @@
+var $main=document.querySelector("main")
+
 var $dataViews=document.querySelectorAll("div[data-view]")
 var $addButtons=document.querySelectorAll("#add-button")
 
@@ -142,6 +144,40 @@ document.addEventListener("click",function(event){
         localStorage.setItem("addedList",JSON.stringify(addedList))
       }
     }
+  } else if (event.target.matches("#delete")){
+    $main.appendChild(renderModal())
+    var clickedList=event.target.closest("li")
+
+    var $overlay=document.querySelector("#overlay")
+    $overlay.addEventListener("click",function(event){
+      if (event.target.matches("#delete-confirm")){
+        var $favLists=document.querySelectorAll("#fav-li")
+        var $checkLists=document.querySelectorAll("#check-li")
+
+        for (var i =0;i<$favLists.length;i++){
+          if (clickedList===$favLists[i]){
+            var text=$favLists[i].getElementsByTagName("p")[0].textContent
+            for (var i=0;i<addedList.favorites.length;i++){
+              if (addedList.favorites[i].text===text){
+                addedList.favorites.splice(i,1)
+                localStorage.setItem("addedList",JSON.stringify(addedList))
+              }
+            }
+          }
+        }
+
+        for (var i=0;i<$checkLists.length;i++){
+          if (clickedList===$checkLists[i]){
+            addedList.toDos.splice(i,1)
+            localStorage.setItem("addedList",JSON.stringify(addedList))
+          }
+        }
+        clickedList.remove()
+        $overlay.remove()
+      }
+    })
+  } else if (event.target.matches("#undo")){
+    document.querySelector("#overlay").remove()
   }
 })
 
@@ -193,14 +229,27 @@ $toDoList.addEventListener("change",function(event){
 
 function renderLi (text,author){
   var $li = document.createElement("li")
+  $li.setAttribute("id","fav-li")
+
+  var $pDiv=document.createElement("div")
+  $li.appendChild($pDiv)
 
   var $pText=document.createElement("p")
   $pText.textContent=text
-  $li.appendChild($pText)
+  $pDiv.appendChild($pText)
 
   var $pAuthor=document.createElement("p")
   $pAuthor.textContent=author
-  $li.appendChild($pAuthor)
+  $pDiv.appendChild($pAuthor)
+
+  var $delDiv = document.createElement("div")
+  $delDiv.setAttribute("class", "del-div")
+  $li.appendChild($delDiv)
+
+  var $delete=document.createElement("i")
+  $delete.setAttribute("class","fas fa-trash")
+  $delete.setAttribute("id","delete")
+  $delDiv.appendChild($delete)
 
   return $li
 }
@@ -208,18 +257,63 @@ function renderLi (text,author){
 function renderCheckLi (text){
   var $li = document.createElement("li")
   $li.setAttribute("class","check-li")
+  $li.setAttribute("id","check-li")
+
+  var $divLi=document.createElement("div")
+  $divLi.setAttribute("class","div-li")
+  $li.appendChild($divLi)
 
   var $checkbox=document.createElement("input")
   $checkbox.setAttribute("type","checkbox")
   $checkbox.setAttribute("id",text)
   $checkbox.setAttribute("class","checkbox")
-  $li.appendChild($checkbox)
+  $divLi.appendChild($checkbox)
 
   var $label=document.createElement("label")
   $label.setAttribute("for",text)
   $label.setAttribute("class","label")
   $label.textContent=text
-  $li.appendChild($label)
+  $divLi.appendChild($label)
+
+  var $delDiv=document.createElement("div")
+  $delDiv.setAttribute("class","del-div")
+  $li.appendChild($delDiv)
+
+  var $delete=document.createElement("i")
+  $delete.setAttribute("class","fas fa-trash")
+  $delete.setAttribute("id","delete")
+  $delDiv.appendChild($delete)
 
   return $li
+}
+
+function renderModal(){
+  var $divOverlay=document.createElement("div")
+  $divOverlay.setAttribute("class","overlay")
+  $divOverlay.setAttribute("id","overlay")
+
+  var $divModal=document.createElement("div")
+  $divModal.setAttribute("class","modal")
+  $divOverlay.appendChild($divModal)
+
+  var $h2=document.createElement("h2")
+  $h2.setAttribute("class","modal-message")
+  $h2.textContent="Are You Sure You Want To Delete?"
+  $divModal.appendChild($h2)
+
+  var $divModalIcons=document.createElement("div")
+  $divModalIcons.setAttribute("class","modal-icons")
+  $divModal.appendChild($divModalIcons)
+
+  var $delete=document.createElement("i")
+  $delete.setAttribute("class","fas fa-trash modal-icon")
+  $delete.setAttribute("id","delete-confirm")
+  $divModalIcons.appendChild($delete)
+
+  var $undo=document.createElement("i")
+  $undo.setAttribute("class","fas fa-undo modal-icon")
+  $undo.setAttribute("id","undo")
+  $divModalIcons.appendChild($undo)
+
+  return $divOverlay
 }
