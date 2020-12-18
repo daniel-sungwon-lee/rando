@@ -1,3 +1,5 @@
+var $main=document.querySelector("main")
+
 var $dataViews=document.querySelectorAll("div[data-view]")
 var $addButtons=document.querySelectorAll("#add-button")
 
@@ -142,6 +144,8 @@ document.addEventListener("click",function(event){
         localStorage.setItem("addedList",JSON.stringify(addedList))
       }
     }
+  } else if (event.target.matches("#delete")){
+    $main.appendChild(renderModal())
   }
 })
 
@@ -247,4 +251,34 @@ function renderCheckLi (text){
   $delDiv.appendChild($delete)
 
   return $li
+}
+
+function renderModal(){
+  var $divOverlay=document.createElement("div")
+  $divOverlay.setAttribute("class","overlay")
+
+  var $divModal=document.createElement("div")
+  $divModal.setAttribute("class","modal")
+  $divOverlay.appendChild($divModal)
+
+  var $h2=document.createElement("h2")
+  $h2.setAttribute("class","modal-message")
+  $h2.textContent="Are You Sure You Want To Delete?"
+  $divModal.appendChild($h2)
+
+  var $divModalIcons=document.createElement("div")
+  $divModalIcons.setAttribute("class","modal-icons")
+  $divModal.appendChild($divModalIcons)
+
+  var $delete=document.createElement("i")
+  $delete.setAttribute("class","fas fa-trash modal-icon")
+  $delete.setAttribute("id","delete-confirm")
+  $divModalIcons.appendChild($delete)
+
+  var $undo=document.createElement("i")
+  $undo.setAttribute("class","fas fa-undo modal-icon")
+  $undo.setAttribute("id","undo")
+  $divModalIcons.appendChild($undo)
+
+  return $divOverlay
 }

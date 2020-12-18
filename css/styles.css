@@ -101,10 +101,17 @@ ul{
 .checkbox:checked{
   opacity: 0.3;
 }
-.fas.fa-trash{
+.fas{
   cursor: pointer;
   color: #adb5bd;
 }
+.modal-icon{
+  margin: 0 2.5rem 3rem;
+  font-size: 26px;
+}
 .fas.fa-trash:active{
   color: #ef233c;
+}
+.fas.fas.fa-undo:active{
+  color: #30B08E;
 }
