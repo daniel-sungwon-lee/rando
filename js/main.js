@@ -101,6 +101,8 @@ document.addEventListener("click",function(event){
     if (event.target.matches("#add-button")){
       var $h2 = document.querySelector("h2")
       if ($h2.getAttribute("id")==="advice"){
+        $adviceList.firstElementChild.className="title"
+
         var content = new fav("advice")
         content.text=$h2.textContent
 
@@ -109,6 +111,8 @@ document.addEventListener("click",function(event){
         addedList.favorites.push(content)
         localStorage.setItem("addedList",JSON.stringify(addedList))
       } else if ($h2.getAttribute("id")==="quote"){
+        $quoteList.firstElementChild.className="title"
+
         var content=new fav("quote")
         content.text=$h2.textContent
         var $h3 = document.querySelector("#author")
@@ -119,6 +123,8 @@ document.addEventListener("click",function(event){
         addedList.favorites.push(content)
         localStorage.setItem("addedList",JSON.stringify(addedList))
       } else if ($h2.getAttribute("id")==="joke"){
+        $jokeList.firstElementChild.className="title"
+
         var content = new fav("joke")
         content.text=$h2.textContent
 
@@ -174,6 +180,32 @@ document.addEventListener("click",function(event){
         }
         clickedList.remove()
         $overlay.remove()
+
+        var $adviceLi = $adviceList.getElementsByTagName("li")
+        var $quoteLi = $quoteList.getElementsByTagName("li")
+        var $jokeLi = $jokeList.getElementsByTagName("li")
+
+        if ($adviceLi.length===0 && $quoteLi.length===0 && $jokeLi.length===0) {
+          $favHeader.className = "hidden"
+          swap("home")
+        }
+
+        if ($adviceLi.length === 0) {
+          $adviceList.firstElementChild.className = "hidden"
+        }
+        if ($quoteLi.length === 0) {
+          $quoteList.firstElementChild.className = "hidden"
+        }
+        if ($jokeLi.length === 0) {
+          $jokeList.firstElementChild.className = "hidden"
+        }
+
+        var $toDoLi=$toDoList.getElementsByTagName("li")
+
+        if ($toDoLi.length===0){
+          $toDoHeader.className="hidden"
+          swap("home")
+        }
       }
     })
   } else if (event.target.matches("#undo")){
@@ -185,8 +217,6 @@ document.addEventListener("DOMContentLoaded", function(event){
   if (userAddedList!==null){
     addedList=userAddedList
     swap("home")
-    $favHeader.className="header"
-    $toDoHeader.className="header"
 
     for (var i=0;i<userAddedList.favorites.length;i++){
       if (userAddedList.favorites[i].type==="advice"){
@@ -214,6 +244,31 @@ document.addEventListener("DOMContentLoaded", function(event){
       $checkbox[i].checked=userAddedList.toDos[i].isComplete
     }
   }
+
+  var $adviceLi = $adviceList.getElementsByTagName("li")
+  var $quoteLi = $quoteList.getElementsByTagName("li")
+  var $jokeLi = $jokeList.getElementsByTagName("li")
+
+  if ($adviceLi.length>0 || $quoteLi.length>0 || $jokeLi.length>0){
+    $favHeader.className = "header"
+  }
+
+  if ($adviceLi.length===0) {
+    $adviceList.firstElementChild.className="hidden"
+  }
+  if ($quoteLi.length === 0) {
+    $quoteList.firstElementChild.className = "hidden"
+  }
+  if ($jokeLi.length === 0) {
+    $jokeList.firstElementChild.className = "hidden"
+  }
+
+  var $toDoLi=$toDoList.getElementsByTagName("li")
+
+  if ($toDoLi.length>0){
+    $toDoHeader.className="header"
+  }
+
   swap("home")
 })
 
