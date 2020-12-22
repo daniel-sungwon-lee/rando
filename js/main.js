@@ -223,10 +223,12 @@ document.addEventListener("DOMContentLoaded", function(event){
         var text=userAddedList.favorites[i].text
         var author=userAddedList.favorites[i].author
         $adviceList.appendChild(renderLi(text,author))
+
       } else if (userAddedList.favorites[i].type==="quote"){
         var text = userAddedList.favorites[i].text
         var author = userAddedList.favorites[i].author
         $quoteList.appendChild(renderLi(text, author))
+
       } else if (userAddedList.favorites[i].type==="joke"){
         var text = userAddedList.favorites[i].text
         var author = userAddedList.favorites[i].author
