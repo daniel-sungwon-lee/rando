@@ -47,7 +47,7 @@ function getDadJoke(){
 
 function getActivity(){
   var xhr = new XMLHttpRequest()
-  xhr.open("GET", "http://www.boredapi.com/api/activity/")
+  xhr.open("GET", "https://www.boredapi.com/api/activity/")
   xhr.addEventListener("load", function () {
     var data = JSON.parse(xhr.response)
     var $h2=document.createElement("h2")
