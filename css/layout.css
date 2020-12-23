@@ -73,3 +73,19 @@ p{
 .modal-icons{
   text-align: center;
 }
+
+@media screen and (max-width:370px){
+  .header.narrow{
+    margin-left: 1rem;
+  }
+}
+
+@media screen and (max-height:420px){
+  .container-data{
+    top: 59%;
+    max-height: 70%;
+  }
+  .add-button.landscape{
+    top: 1rem;
+  }
+}

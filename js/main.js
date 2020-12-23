@@ -55,7 +55,7 @@ document.addEventListener("click",function(event){
     getAdvice()
     for (var i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='favorites']")) {
-        $addButtons[i].className = "add-button"
+        $addButtons[i].className = "add-button landscape"
       } else {
         $addButtons[i].className = "add-button hidden"
       }
@@ -70,7 +70,7 @@ document.addEventListener("click",function(event){
     getFamousQuote()
     for (var i =0;i<$addButtons.length;i++){
       if ($addButtons[i].matches("a[data-view='favorites']")){
-        $addButtons[i].className="add-button"
+        $addButtons[i].className="add-button landscape"
       }else {
         $addButtons[i].className="add-button hidden"
       }
@@ -80,7 +80,7 @@ document.addEventListener("click",function(event){
     getDadJoke()
     for (var i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='favorites']")) {
-        $addButtons[i].className = "add-button"
+        $addButtons[i].className = "add-button landscape"
       } else {
         $addButtons[i].className = "add-button hidden"
       }
@@ -90,14 +90,14 @@ document.addEventListener("click",function(event){
     getActivity()
     for (var i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='to-do']")) {
-        $addButtons[i].className = "add-button"
+        $addButtons[i].className = "add-button landscape"
       } else {
         $addButtons[i].className = "add-button hidden"
       }
     }
   } else if (event.target.matches("a[data-view='favorites']")){
     swap("favorites")
-    $favHeader.className="header"
+    $favHeader.className="header narrow"
     if (event.target.matches("#add-button")){
       var $h2 = document.querySelector("h2")
       if ($h2.getAttribute("id")==="advice"){
@@ -136,7 +136,7 @@ document.addEventListener("click",function(event){
     }
   } else if (event.target.matches("a[data-view='to-do']")){
     swap("to-do")
-    $toDoHeader.className="header"
+    $toDoHeader.className="header narrow"
     if (event.target.matches("#add-button")){
       var $h2=document.querySelector("h2")
       if ($h2.getAttribute("id")==="activity"){
@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", function(event){
   var $jokeLi = $jokeList.getElementsByTagName("li")
 
   if ($adviceLi.length>0 || $quoteLi.length>0 || $jokeLi.length>0){
-    $favHeader.className = "header"
+    $favHeader.className = "header narrow"
   }
 
   if ($adviceLi.length===0) {
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function(event){
   var $toDoLi=$toDoList.getElementsByTagName("li")
 
   if ($toDoLi.length>0){
-    $toDoHeader.className="header"
+    $toDoHeader.className="header narrow"
   }
 
   swap("home")
