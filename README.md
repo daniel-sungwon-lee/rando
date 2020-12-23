@@ -14,7 +14,7 @@ A web application created using JavaScript, CSS3, and HTML5 that generates rando
 * User can delete any of their saved random data
 
 **Planned Additions:**
-* User can rearrange the order of saved data
+* User can re-arrange the order of saved data
 * User can get a random recipie by clicking button
 
 **What I Learned From Working on This Project:**
