@@ -3,7 +3,8 @@
 A web application created using JavaScript, CSS3, and HTML5 that generates random advices, quotes, jokes, and activities for people who want a small dose of motivation, inspiration, and/or humor.
 
 
-## **Link to Live Demo:** https://daniel-sungwon-lee.github.io/ajax-project/
+## **Link to Live Demo:** 
+https://daniel-sungwon-lee.github.io/ajax-project/
 
 
 ## **Current Features:**
