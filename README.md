@@ -20,6 +20,7 @@ https://daniel-sungwon-lee.github.io/ajax-project/
 ## **Planned Additions:**
 * User can re-arrange the order of saved data
 * User can get a random recipie by clicking button
+* User can search for the saved data 
 
 
 ## **What I Learned From Working on This Project:**
