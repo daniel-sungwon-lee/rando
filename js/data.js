@@ -79,6 +79,7 @@ function fav(type){
   this.type=type
   this.text=null
   this.author=""
+  this.url=null
 }
 
 function todo(type){

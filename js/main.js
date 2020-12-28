@@ -7,6 +7,7 @@ var $favHeader=document.querySelector("a[data-view='favorites']")
 var $adviceList=document.querySelector("#advices")
 var $quoteList=document.querySelector("#quotes")
 var $jokeList=document.querySelector("#jokes")
+var $recipeList=document.querySelector("#recipes")
 
 var $toDoHeader=document.querySelector("a[data-view='to-do']")
 var $toDoList=document.querySelector("#to-do-list")
@@ -95,6 +96,16 @@ document.addEventListener("click",function(event){
         $addButtons[i].className = "add-button hidden"
       }
     }
+  } else if (event.target.matches("#recipe-button")){
+    swap("random-data")
+    getRecipe()
+    for (var i = 0; i < $addButtons.length; i++) {
+      if ($addButtons[i].matches("a[data-view='favorites']")) {
+        $addButtons[i].className = "add-button landscape"
+      } else {
+        $addButtons[i].className = "add-button hidden"
+      }
+    }
   } else if (event.target.matches("a[data-view='favorites']")){
     swap("favorites")
     $favHeader.className="header narrow"
@@ -129,6 +140,17 @@ document.addEventListener("click",function(event){
         content.text=$h2.textContent
 
         $jokeList.appendChild(renderLi(content.text,content.author))
+
+        addedList.favorites.push(content)
+        localStorage.setItem("addedList",JSON.stringify(addedList))
+      } else if ($h2.getAttribute("id")==="recipe"){
+        $recipeList.firstElementChild.className="title"
+
+        var content = new fav("recipe")
+        content.text=$h2.textContent
+        content.url = $h2.firstElementChild.getAttribute("href")
+
+        $recipeList.appendChild(renderRecipeLi(content.text,content.url))
 
         addedList.favorites.push(content)
         localStorage.setItem("addedList",JSON.stringify(addedList))
@@ -184,8 +206,9 @@ document.addEventListener("click",function(event){
         var $adviceLi = $adviceList.getElementsByTagName("li")
         var $quoteLi = $quoteList.getElementsByTagName("li")
         var $jokeLi = $jokeList.getElementsByTagName("li")
+        var $recipeLi = $recipeList.getElementsByTagName("li")
 
-        if ($adviceLi.length===0 && $quoteLi.length===0 && $jokeLi.length===0) {
+        if ($adviceLi.length===0 && $quoteLi.length===0 && $jokeLi.length===0 && $recipeLi.length===0) {
           $favHeader.className = "hidden"
           swap("home")
         }
@@ -198,6 +221,9 @@ document.addEventListener("click",function(event){
         }
         if ($jokeLi.length === 0) {
           $jokeList.firstElementChild.className = "hidden"
+        }
+        if ($recipeLi.length===0) {
+          $recipeList.firstElementChild.className="hidden"
         }
 
         var $toDoLi=$toDoList.getElementsByTagName("li")
@@ -233,6 +259,11 @@ document.addEventListener("click",function(event){
         document.querySelector("#api-data").firstElementChild.remove()
       }
       getActivity()
+    } else if (type==="recipe"){
+      while(document.querySelector("#api-data").firstElementChild){
+        document.querySelector("#api-data").firstElementChild.remove()
+      }
+      getRecipe()
     }
   }
 })
@@ -257,6 +288,11 @@ document.addEventListener("DOMContentLoaded", function(event){
         var text = userAddedList.favorites[i].text
         var author = userAddedList.favorites[i].author
         $jokeList.appendChild(renderLi(text, author))
+
+      } else if (userAddedList.favorites[i].type==="recipe"){
+        var text=userAddedList.favorites[i].text
+        var url=userAddedList.favorites[i].url
+        $recipeList.appendChild(renderRecipeLi(text,url))
       }
     }
 
@@ -274,8 +310,9 @@ document.addEventListener("DOMContentLoaded", function(event){
   var $adviceLi = $adviceList.getElementsByTagName("li")
   var $quoteLi = $quoteList.getElementsByTagName("li")
   var $jokeLi = $jokeList.getElementsByTagName("li")
+  var $recipeLi = $recipeList.getElementsByTagName("li")
 
-  if ($adviceLi.length>0 || $quoteLi.length>0 || $jokeLi.length>0){
+  if ($adviceLi.length>0 || $quoteLi.length>0 || $jokeLi.length>0 || $recipeLi.length>0){
     $favHeader.className = "header narrow"
   }
 
@@ -287,6 +324,9 @@ document.addEventListener("DOMContentLoaded", function(event){
   }
   if ($jokeLi.length === 0) {
     $jokeList.firstElementChild.className = "hidden"
+  }
+  if ($recipeLi.length===0) {
+    $recipeList.firstElementChild.className="hidden"
   }
 
   var $toDoLi=$toDoList.getElementsByTagName("li")
@@ -363,6 +403,34 @@ function renderCheckLi (text){
   var $delete=document.createElement("i")
   $delete.setAttribute("class","fas fa-trash")
   $delete.setAttribute("id","delete")
+  $delDiv.appendChild($delete)
+
+  return $li
+}
+
+function renderRecipeLi (text,url){
+  var $li = document.createElement("li")
+  $li.setAttribute("id", "fav-li")
+
+  var $pDiv = document.createElement("div")
+  $li.appendChild($pDiv)
+
+  var $link = document.createElement("a")
+  $link.setAttribute("class","recipe")
+  $link.setAttribute("href",url)
+  $pDiv.appendChild($link)
+
+  var $pText = document.createElement("p")
+  $pText.textContent = text
+  $link.appendChild($pText)
+
+  var $delDiv = document.createElement("div")
+  $delDiv.setAttribute("class", "del-div")
+  $li.appendChild($delDiv)
+
+  var $delete = document.createElement("i")
+  $delete.setAttribute("class", "fas fa-trash")
+  $delete.setAttribute("id", "delete")
   $delDiv.appendChild($delete)
 
   return $li
