@@ -75,6 +75,14 @@ p{
 .modal-icons{
   text-align: center;
 }
+.links{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  top: 2rem;
+  transition: all 0.5s ease-out;
+}
 
 @media screen and (max-width:370px){
   header{
@@ -96,7 +104,15 @@ p{
     width: 85%;
     max-height: 50%;
   }
-  .add-button.landscape{
+  .links{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     top: 1rem;
+  }
+  .add-button.landscape{
+    top: 0rem;
+    margin: initial;
+    margin-left: 2.5rem;
   }
 }

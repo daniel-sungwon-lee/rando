@@ -210,6 +210,30 @@ document.addEventListener("click",function(event){
     })
   } else if (event.target.matches("#undo")){
     document.querySelector("#overlay").remove()
+  } else if (event.target.matches("#reload")){
+    var type=document.querySelector("#api-data").firstElementChild.getAttribute("id")
+
+    if (type==="advice"){
+      while (document.querySelector("#api-data").firstElementChild){
+        document.querySelector("#api-data").firstElementChild.remove()
+      }
+      getAdvice()
+    } else if (type==="quote"){
+      while (document.querySelector("#api-data").firstElementChild) {
+        document.querySelector("#api-data").firstElementChild.remove()
+      }
+      getFamousQuote()
+    } else if (type==="joke"){
+      while (document.querySelector("#api-data").firstElementChild) {
+        document.querySelector("#api-data").firstElementChild.remove()
+      }
+      getDadJoke()
+    } else if (type==="activity"){
+      while (document.querySelector("#api-data").firstElementChild) {
+        document.querySelector("#api-data").firstElementChild.remove()
+      }
+      getActivity()
+    }
   }
 })
 
