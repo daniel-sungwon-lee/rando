@@ -11,9 +11,6 @@
 .header:hover{
   color: white;
 }
-.header:active{
-  color: white;
-}
 h1{
   font-family: "Yantramanav",sans-serif;
   text-transform: uppercase;
@@ -62,14 +59,14 @@ h3 {
 }
 .recipe{
   text-decoration: none;
-  color: black;
+  color: #008BF5;
   transition: all 0.3s ease-out;
 }
 .recipe:hover{
-  color: #008BF5;
+  color: #47AFFF;
 }
 .recipe:active{
-  color: white;
+  color: #D6EDFF;
 }
 .add-button{
   border: solid #ced4da;
