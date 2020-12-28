@@ -66,6 +66,7 @@ function getRecipe(){
     var $h2=document.createElement("h2")
     $h2.setAttribute("id","recipe")
     var $link=document.createElement("a")
+    $link.setAttribute("target","_blank")
     $link.setAttribute("href",data.meals[0].strSource)
     $link.setAttribute("class","recipe")
     $link.textContent=data.meals[0].strMeal

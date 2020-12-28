@@ -416,6 +416,7 @@ function renderRecipeLi (text,url){
   $li.appendChild($linkDiv)
 
   var $link = document.createElement("a")
+  $link.setAttribute("target","_blank")
   $link.setAttribute("class","recipe")
   $link.setAttribute("href",url)
   $linkDiv.appendChild($link)
