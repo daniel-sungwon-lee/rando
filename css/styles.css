@@ -6,7 +6,10 @@
   margin-left: 2rem;
   font-size: 24px;
   font-weight: 600;
-  transition: all 0.5s ease-out;
+  transition: all 0.3s ease-out;
+}
+.header:hover{
+  color: white;
 }
 .header:active{
   color: white;
@@ -56,6 +59,17 @@ h3 {
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 3rem;
+}
+.recipe{
+  text-decoration: none;
+  color: black;
+  transition: all 0.3s ease-out;
+}
+.recipe:hover{
+  color: #008BF5;
+}
+.recipe:active{
+  color: white;
 }
 .add-button{
   border: solid #ced4da;

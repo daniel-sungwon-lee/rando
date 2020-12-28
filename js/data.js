@@ -58,6 +58,23 @@ function getActivity(){
   xhr.send()
 }
 
+function getRecipe(){
+  var xhr = new XMLHttpRequest()
+  xhr.open("GET", "https://www.themealdb.com/api/json/v1/1/random.php")
+  xhr.addEventListener("load",function(){
+    var data = JSON.parse(xhr.response)
+    var $h2=document.createElement("h2")
+    $h2.setAttribute("id","recipe")
+    var $link=document.createElement("a")
+    $link.setAttribute("href",data.meals[0].strSource)
+    $link.setAttribute("class","recipe")
+    $link.textContent=data.meals[0].strMeal
+    $h2.appendChild($link)
+    $apiData.appendChild($h2)
+  })
+  xhr.send()
+}
+
 function fav(type){
   this.type=type
   this.text=null
