@@ -412,13 +412,13 @@ function renderRecipeLi (text,url){
   var $li = document.createElement("li")
   $li.setAttribute("id", "fav-li")
 
-  var $pDiv = document.createElement("div")
-  $li.appendChild($pDiv)
+  var $linkDiv = document.createElement("div")
+  $li.appendChild($linkDiv)
 
   var $link = document.createElement("a")
   $link.setAttribute("class","recipe")
   $link.setAttribute("href",url)
-  $pDiv.appendChild($link)
+  $linkDiv.appendChild($link)
 
   var $pText = document.createElement("p")
   $pText.textContent = text
