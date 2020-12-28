@@ -12,6 +12,7 @@ https://daniel-sungwon-lee.github.io/ajax-project/
 * User can get a random quote by clicking button
 * User can get a random dad joke by clicking button
 * User can get a random activity by clicking button
+* User can get a random recipe by clicking button
 * User can add any data to their favorites/to-do list
 * User can view their favorites by category
 * User can delete any of their saved random data
@@ -19,7 +20,6 @@ https://daniel-sungwon-lee.github.io/ajax-project/
 
 ## **Planned Additions:**
 * User can re-arrange the order of saved data
-* User can get a random recipie by clicking button
 
 
 ## **What I Learned From Working on This Project:**
