@@ -1,6 +1,6 @@
 # RANDO
 
-The Random App for Needing Data Output, RANDO is a web application created using JavaScript, CSS3, and HTML5 that generates random advices, quotes, jokes, activities, and recipes for people who want a small dose of motivation, inspiration, and/or humor.
+The Random App for Needing Data Output, RANDO is a web application created using JavaScript, CSS3, and HTML5 that generates random advices, quotes, jokes, activities, and recipes for people who want a small dose of wisdom, inspiration, humor, motivation, and /or information.
 
 
 ## **Link to Live Demo:**
