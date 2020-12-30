@@ -10,6 +10,9 @@ function getAdvice(){
     $h2.setAttribute("id","advice")
     $h2.textContent=data.slip.advice
     $apiData.appendChild($h2)
+    if ($apiData.querySelector(".spinner")){
+      $apiData.querySelector(".spinner").remove()
+    }
   })
   xhr.send()
 }
@@ -27,6 +30,9 @@ function getFamousQuote(){
     $h3.setAttribute("id","author")
     $h3.textContent="-"+data.data[0].quoteAuthor
     $apiData.appendChild($h3)
+    if ($apiData.querySelector(".spinner")) {
+      $apiData.querySelector(".spinner").remove()
+    }
   })
   xhr.send()
 }
@@ -41,6 +47,9 @@ function getDadJoke(){
     $h2.setAttribute("id","joke")
     $h2.textContent=data.joke
     $apiData.appendChild($h2)
+    if ($apiData.querySelector(".spinner")) {
+      $apiData.querySelector(".spinner").remove()
+    }
   })
   xhr.send()
 }
@@ -54,6 +63,9 @@ function getActivity(){
     $h2.setAttribute("id","activity")
     $h2.textContent=data.activity
     $apiData.appendChild($h2)
+    if ($apiData.querySelector(".spinner")) {
+      $apiData.querySelector(".spinner").remove()
+    }
   })
   xhr.send()
 }
@@ -72,6 +84,9 @@ function getRecipe(){
     $link.textContent=data.meals[0].strMeal
     $h2.appendChild($link)
     $apiData.appendChild($h2)
+    if ($apiData.querySelector(".spinner")) {
+      $apiData.querySelector(".spinner").remove()
+    }
   })
   xhr.send()
 }

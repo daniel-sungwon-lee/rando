@@ -32,7 +32,7 @@ function swap(view){
       }
     }
 
-    //$apiData.appendChild(renderSpinner())//
+    $apiData.appendChild(renderSpinner())
 
   } else if (view==="favorites"){
     for (var i = 0; i < $dataViews.length; i++) {
@@ -58,8 +58,6 @@ document.addEventListener("click",function(event){
     swap("random-data")
     getAdvice()
 
-
-
     for (var i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='favorites']")) {
         $addButtons[i].className = "add-button landscape"
@@ -78,8 +76,6 @@ document.addEventListener("click",function(event){
     swap("random-data")
     getFamousQuote()
 
-
-
     for (var i =0;i<$addButtons.length;i++){
       if ($addButtons[i].matches("a[data-view='favorites']")){
         $addButtons[i].className="add-button landscape"
@@ -91,8 +87,6 @@ document.addEventListener("click",function(event){
   } else if (event.target.matches("#joke-button")){
     swap("random-data")
     getDadJoke()
-
-
 
     for (var i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='favorites']")) {
@@ -106,8 +100,6 @@ document.addEventListener("click",function(event){
     swap("random-data")
     getActivity()
 
-
-
     for (var i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='to-do']")) {
         $addButtons[i].className = "add-button landscape"
@@ -119,8 +111,6 @@ document.addEventListener("click",function(event){
   } else if (event.target.matches("#recipe-button")){
     swap("random-data")
     getRecipe()
-
-
 
     for (var i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='favorites']")) {
@@ -272,26 +262,40 @@ document.addEventListener("click",function(event){
       while (document.querySelector("#api-data").firstElementChild){
         document.querySelector("#api-data").firstElementChild.remove()
       }
+
+      $apiData.appendChild(renderSpinner())
       getAdvice()
+
     } else if (type==="quote"){
       while (document.querySelector("#api-data").firstElementChild) {
         document.querySelector("#api-data").firstElementChild.remove()
       }
+
+      $apiData.appendChild(renderSpinner())
       getFamousQuote()
+
     } else if (type==="joke"){
       while (document.querySelector("#api-data").firstElementChild) {
         document.querySelector("#api-data").firstElementChild.remove()
       }
+
+      $apiData.appendChild(renderSpinner())
       getDadJoke()
+
     } else if (type==="activity"){
       while (document.querySelector("#api-data").firstElementChild) {
         document.querySelector("#api-data").firstElementChild.remove()
       }
+
+      $apiData.appendChild(renderSpinner())
       getActivity()
+
     } else if (type==="recipe"){
       while(document.querySelector("#api-data").firstElementChild){
         document.querySelector("#api-data").firstElementChild.remove()
       }
+
+      $apiData.appendChild(renderSpinner())
       getRecipe()
     }
   }
