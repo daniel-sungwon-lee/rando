@@ -31,6 +31,9 @@ function swap(view){
       $dataViews[i].className="hidden"
       }
     }
+
+    //$apiData.appendChild(renderSpinner())//
+
   } else if (view==="favorites"){
     for (var i = 0; i < $dataViews.length; i++) {
       if ($dataViews[i].getAttribute("data-view") === view) {
@@ -54,6 +57,9 @@ document.addEventListener("click",function(event){
   if (event.target.matches("#advice-button")){
     swap("random-data")
     getAdvice()
+
+
+
     for (var i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='favorites']")) {
         $addButtons[i].className = "add-button landscape"
@@ -61,14 +67,19 @@ document.addEventListener("click",function(event){
         $addButtons[i].className = "add-button hidden"
       }
     }
+
   } else if (event.target.matches("a[data-view='home']")){
     while ($apiData.firstChild){
       $apiData.firstChild.remove()
     }
     swap("home")
+
   } else if (event.target.matches("#quote-button")){
     swap("random-data")
     getFamousQuote()
+
+
+
     for (var i =0;i<$addButtons.length;i++){
       if ($addButtons[i].matches("a[data-view='favorites']")){
         $addButtons[i].className="add-button landscape"
@@ -76,9 +87,13 @@ document.addEventListener("click",function(event){
         $addButtons[i].className="add-button hidden"
       }
     }
+
   } else if (event.target.matches("#joke-button")){
     swap("random-data")
     getDadJoke()
+
+
+
     for (var i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='favorites']")) {
         $addButtons[i].className = "add-button landscape"
@@ -86,9 +101,13 @@ document.addEventListener("click",function(event){
         $addButtons[i].className = "add-button hidden"
       }
     }
+
   } else if (event.target.matches("#activity-button")){
     swap("random-data")
     getActivity()
+
+
+
     for (var i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='to-do']")) {
         $addButtons[i].className = "add-button landscape"
@@ -96,9 +115,13 @@ document.addEventListener("click",function(event){
         $addButtons[i].className = "add-button hidden"
       }
     }
+
   } else if (event.target.matches("#recipe-button")){
     swap("random-data")
     getRecipe()
+
+
+
     for (var i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='favorites']")) {
         $addButtons[i].className = "add-button landscape"
@@ -106,6 +129,7 @@ document.addEventListener("click",function(event){
         $addButtons[i].className = "add-button hidden"
       }
     }
+
   } else if (event.target.matches("a[data-view='favorites']")){
     swap("favorites")
     $favHeader.className="header narrow"
@@ -121,6 +145,7 @@ document.addEventListener("click",function(event){
 
         addedList.favorites.push(content)
         localStorage.setItem("addedList",JSON.stringify(addedList))
+
       } else if ($h2.getAttribute("id")==="quote"){
         $quoteList.firstElementChild.className="title"
 
@@ -133,6 +158,7 @@ document.addEventListener("click",function(event){
 
         addedList.favorites.push(content)
         localStorage.setItem("addedList",JSON.stringify(addedList))
+
       } else if ($h2.getAttribute("id")==="joke"){
         $jokeList.firstElementChild.className="title"
 
@@ -143,6 +169,7 @@ document.addEventListener("click",function(event){
 
         addedList.favorites.push(content)
         localStorage.setItem("addedList",JSON.stringify(addedList))
+
       } else if ($h2.getAttribute("id")==="recipe"){
         $recipeList.firstElementChild.className="title"
 
@@ -185,6 +212,7 @@ document.addEventListener("click",function(event){
         for (var i =0;i<$favLists.length;i++){
           if (clickedList===$favLists[i]){
             var text=$favLists[i].getElementsByTagName("p")[0].textContent
+
             for (var i=0;i<addedList.favorites.length;i++){
               if (addedList.favorites[i].text===text){
                 addedList.favorites.splice(i,1)
@@ -236,6 +264,7 @@ document.addEventListener("click",function(event){
     })
   } else if (event.target.matches("#undo")){
     document.querySelector("#overlay").remove()
+
   } else if (event.target.matches("#reload")){
     var type=document.querySelector("#api-data").firstElementChild.getAttribute("id")
 
@@ -466,4 +495,23 @@ function renderModal(){
   $divModalIcons.appendChild($undo)
 
   return $divOverlay
+}
+
+function renderSpinner(){
+  var $spinner=document.createElement("div")
+  $spinner.className="spinner"
+
+  var $bounce1 = document.createElement("div")
+  $bounce1.className="bounce1"
+  $spinner.appendChild($bounce1)
+
+  var $bounce2=document.createElement("div")
+  $bounce2.className="bounce2"
+  $spinner.appendChild($bounce2)
+
+  var $bounce3=document.createElement("div")
+  $bounce3.className="bounce3"
+  $spinner.appendChild($bounce3)
+
+  return $spinner
 }
