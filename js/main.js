@@ -12,8 +12,6 @@ const $recipeList=document.querySelector("#recipes")
 const $toDoHeader=document.querySelector("a[data-view='to-do']")
 const $toDoList=document.querySelector("#to-do-list")
 
-const userAddedList=JSON.parse(localStorage.getItem("addedList"))
-
 function swap(view){
   if (view==="home"){
     for (let i =0;i<$dataViews.length;i++){
@@ -306,37 +304,37 @@ document.addEventListener("DOMContentLoaded",(event)=>{
     addedList=userAddedList
     swap("home")
 
-    for (let i=0;i<userAddedList.favorites.length;i++){
-      if (userAddedList.favorites[i].type==="advice"){
-        const text=userAddedList.favorites[i].text
-        const author=userAddedList.favorites[i].author
+    for (let i=0;i<favorites.length;i++){
+      if (favorites[i].type==="advice"){
+        const text=favorites[i].text
+        const author=favorites[i].author
         $adviceList.appendChild(renderLi(text,author))
 
-      } else if (userAddedList.favorites[i].type==="quote"){
-        const text = userAddedList.favorites[i].text
-        const author = userAddedList.favorites[i].author
+      } else if (favorites[i].type==="quote"){
+        const text = favorites[i].text
+        const author = favorites[i].author
         $quoteList.appendChild(renderLi(text, author))
 
-      } else if (userAddedList.favorites[i].type==="joke"){
-        const text = userAddedList.favorites[i].text
-        const author = userAddedList.favorites[i].author
+      } else if (favorites[i].type==="joke"){
+        const text = favorites[i].text
+        const author = favorites[i].author
         $jokeList.appendChild(renderLi(text, author))
 
-      } else if (userAddedList.favorites[i].type==="recipe"){
-        const text=userAddedList.favorites[i].text
-        const url=userAddedList.favorites[i].url
+      } else if (favorites[i].type==="recipe"){
+        const text=favorites[i].text
+        const url=favorites[i].url
         $recipeList.appendChild(renderRecipeLi(text,url))
       }
     }
 
-    for (let i=0;i<userAddedList.toDos.length;i++){
-      const text = userAddedList.toDos[i].text
+    for (let i=0;i<toDos.length;i++){
+      const text = toDos[i].text
       $toDoList.appendChild(renderCheckLi(text))
     }
 
     const $checkbox=document.querySelectorAll(".checkbox")
     for (let i =0;i<$checkbox.length;i++){
-      $checkbox[i].checked=userAddedList.toDos[i].isComplete
+      $checkbox[i].checked=toDos[i].isComplete
     }
   }
 
