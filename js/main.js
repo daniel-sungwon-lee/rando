@@ -53,7 +53,7 @@ function swap(view){
   }
 }
 
-document.addEventListener("click",function(event){
+document.addEventListener("click",(event)=>{
   if (event.target.matches("#advice-button")){
     swap("random-data")
     getAdvice()
@@ -194,7 +194,7 @@ document.addEventListener("click",function(event){
     const clickedList=event.target.closest("li")
 
     const $overlay=document.querySelector("#overlay")
-    $overlay.addEventListener("click",function(event){
+    $overlay.addEventListener("click",(event)=>{
       if (event.target.matches("#delete-confirm")){
         const $favLists=document.querySelectorAll("#fav-li")
         const $checkLists=document.querySelectorAll("#check-li")
@@ -301,7 +301,7 @@ document.addEventListener("click",function(event){
   }
 })
 
-document.addEventListener("DOMContentLoaded", function(event){
+document.addEventListener("DOMContentLoaded",(event)=>{
   if (userAddedList!==null){
     addedList=userAddedList
     swap("home")
@@ -371,7 +371,7 @@ document.addEventListener("DOMContentLoaded", function(event){
   swap("home")
 })
 
-$toDoList.addEventListener("change",function(event){
+$toDoList.addEventListener("change",(event)=>{
   const todoText=event.target.getAttribute("id")
   for (let i=0;i<addedList.toDos.length;i++){
     if (addedList.toDos[i].text===todoText){
