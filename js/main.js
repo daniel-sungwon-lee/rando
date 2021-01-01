@@ -1,22 +1,22 @@
-var $main=document.querySelector("main")
+const $main=document.querySelector("main")
 
-var $dataViews=document.querySelectorAll("div[data-view]")
-var $addButtons=document.querySelectorAll("#add-button")
+const $dataViews=document.querySelectorAll("div[data-view]")
+const $addButtons=document.querySelectorAll("#add-button")
 
-var $favHeader=document.querySelector("a[data-view='favorites']")
-var $adviceList=document.querySelector("#advices")
-var $quoteList=document.querySelector("#quotes")
-var $jokeList=document.querySelector("#jokes")
-var $recipeList=document.querySelector("#recipes")
+const $favHeader=document.querySelector("a[data-view='favorites']")
+const $adviceList=document.querySelector("#advices")
+const $quoteList=document.querySelector("#quotes")
+const $jokeList=document.querySelector("#jokes")
+const $recipeList=document.querySelector("#recipes")
 
-var $toDoHeader=document.querySelector("a[data-view='to-do']")
-var $toDoList=document.querySelector("#to-do-list")
+const $toDoHeader=document.querySelector("a[data-view='to-do']")
+const $toDoList=document.querySelector("#to-do-list")
 
-var userAddedList=JSON.parse(localStorage.getItem("addedList"))
+const userAddedList=JSON.parse(localStorage.getItem("addedList"))
 
 function swap(view){
   if (view==="home"){
-    for (var i =0;i<$dataViews.length;i++){
+    for (let i =0;i<$dataViews.length;i++){
       if ($dataViews[i].getAttribute("data-view")===view){
         $dataViews[i].className=view
       }else{
@@ -24,7 +24,7 @@ function swap(view){
       }
     }
   } else if (view==="random-data"){
-    for (var i =0;i<$dataViews.length;i++){
+    for (let i =0;i<$dataViews.length;i++){
       if ($dataViews[i].getAttribute("data-view")===view){
         $dataViews[i].className=view
       }else{
@@ -35,7 +35,7 @@ function swap(view){
     $apiData.appendChild(renderSpinner())
 
   } else if (view==="favorites"){
-    for (var i = 0; i < $dataViews.length; i++) {
+    for (let i = 0; i < $dataViews.length; i++) {
       if ($dataViews[i].getAttribute("data-view") === view) {
         $dataViews[i].className = view
       } else {
@@ -43,7 +43,7 @@ function swap(view){
       }
     }
   } else if (view==="to-do"){
-    for (var i = 0; i < $dataViews.length; i++) {
+    for (let i = 0; i < $dataViews.length; i++) {
       if ($dataViews[i].getAttribute("data-view") === view) {
         $dataViews[i].className = view
       } else {
@@ -58,7 +58,7 @@ document.addEventListener("click",function(event){
     swap("random-data")
     getAdvice()
 
-    for (var i = 0; i < $addButtons.length; i++) {
+    for (let i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='favorites']")) {
         $addButtons[i].className = "add-button landscape"
       } else {
@@ -76,7 +76,7 @@ document.addEventListener("click",function(event){
     swap("random-data")
     getFamousQuote()
 
-    for (var i =0;i<$addButtons.length;i++){
+    for (let i =0;i<$addButtons.length;i++){
       if ($addButtons[i].matches("a[data-view='favorites']")){
         $addButtons[i].className="add-button landscape"
       }else {
@@ -88,7 +88,7 @@ document.addEventListener("click",function(event){
     swap("random-data")
     getDadJoke()
 
-    for (var i = 0; i < $addButtons.length; i++) {
+    for (let i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='favorites']")) {
         $addButtons[i].className = "add-button landscape"
       } else {
@@ -100,7 +100,7 @@ document.addEventListener("click",function(event){
     swap("random-data")
     getActivity()
 
-    for (var i = 0; i < $addButtons.length; i++) {
+    for (let i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='to-do']")) {
         $addButtons[i].className = "add-button landscape"
       } else {
@@ -112,7 +112,7 @@ document.addEventListener("click",function(event){
     swap("random-data")
     getRecipe()
 
-    for (var i = 0; i < $addButtons.length; i++) {
+    for (let i = 0; i < $addButtons.length; i++) {
       if ($addButtons[i].matches("a[data-view='favorites']")) {
         $addButtons[i].className = "add-button landscape"
       } else {
@@ -124,11 +124,11 @@ document.addEventListener("click",function(event){
     swap("favorites")
     $favHeader.className="header narrow"
     if (event.target.matches("#add-button")){
-      var $h2 = document.querySelector("h2")
+      const $h2 = document.querySelector("h2")
       if ($h2.getAttribute("id")==="advice"){
         $adviceList.firstElementChild.className="title"
 
-        var content = new fav("advice")
+        let content = new fav("advice")
         content.text=$h2.textContent
 
         $adviceList.appendChild(renderLi(content.text,content.author))
@@ -139,9 +139,9 @@ document.addEventListener("click",function(event){
       } else if ($h2.getAttribute("id")==="quote"){
         $quoteList.firstElementChild.className="title"
 
-        var content=new fav("quote")
+        let content=new fav("quote")
         content.text=$h2.textContent
-        var $h3 = document.querySelector("#author")
+        const $h3 = document.querySelector("#author")
         content.author= $h3.textContent
 
         $quoteList.appendChild(renderLi(content.text,content.author))
@@ -152,7 +152,7 @@ document.addEventListener("click",function(event){
       } else if ($h2.getAttribute("id")==="joke"){
         $jokeList.firstElementChild.className="title"
 
-        var content = new fav("joke")
+        let content = new fav("joke")
         content.text=$h2.textContent
 
         $jokeList.appendChild(renderLi(content.text,content.author))
@@ -163,7 +163,7 @@ document.addEventListener("click",function(event){
       } else if ($h2.getAttribute("id")==="recipe"){
         $recipeList.firstElementChild.className="title"
 
-        var content = new fav("recipe")
+        let content = new fav("recipe")
         content.text=$h2.textContent
         content.url = $h2.firstElementChild.getAttribute("href")
 
@@ -177,9 +177,9 @@ document.addEventListener("click",function(event){
     swap("to-do")
     $toDoHeader.className="header narrow"
     if (event.target.matches("#add-button")){
-      var $h2=document.querySelector("h2")
+      const $h2=document.querySelector("h2")
       if ($h2.getAttribute("id")==="activity"){
-        var content=new todo("activity")
+        let content=new todo("activity")
         content.text=$h2.textContent
         content.isComplete=false
 
@@ -191,19 +191,19 @@ document.addEventListener("click",function(event){
     }
   } else if (event.target.matches("#delete")){
     $main.appendChild(renderModal())
-    var clickedList=event.target.closest("li")
+    const clickedList=event.target.closest("li")
 
-    var $overlay=document.querySelector("#overlay")
+    const $overlay=document.querySelector("#overlay")
     $overlay.addEventListener("click",function(event){
       if (event.target.matches("#delete-confirm")){
-        var $favLists=document.querySelectorAll("#fav-li")
-        var $checkLists=document.querySelectorAll("#check-li")
+        const $favLists=document.querySelectorAll("#fav-li")
+        const $checkLists=document.querySelectorAll("#check-li")
 
-        for (var i =0;i<$favLists.length;i++){
+        for (let i =0;i<$favLists.length;i++){
           if (clickedList===$favLists[i]){
-            var text=$favLists[i].getElementsByTagName("p")[0].textContent
+            let text=$favLists[i].getElementsByTagName("p")[0].textContent
 
-            for (var i=0;i<addedList.favorites.length;i++){
+            for (let i=0;i<addedList.favorites.length;i++){
               if (addedList.favorites[i].text===text){
                 addedList.favorites.splice(i,1)
                 localStorage.setItem("addedList",JSON.stringify(addedList))
@@ -212,7 +212,7 @@ document.addEventListener("click",function(event){
           }
         }
 
-        for (var i=0;i<$checkLists.length;i++){
+        for (let i=0;i<$checkLists.length;i++){
           if (clickedList===$checkLists[i]){
             addedList.toDos.splice(i,1)
             localStorage.setItem("addedList",JSON.stringify(addedList))
@@ -221,10 +221,10 @@ document.addEventListener("click",function(event){
         clickedList.remove()
         $overlay.remove()
 
-        var $adviceLi = $adviceList.getElementsByTagName("li")
-        var $quoteLi = $quoteList.getElementsByTagName("li")
-        var $jokeLi = $jokeList.getElementsByTagName("li")
-        var $recipeLi = $recipeList.getElementsByTagName("li")
+        const $adviceLi = $adviceList.getElementsByTagName("li")
+        const $quoteLi = $quoteList.getElementsByTagName("li")
+        const $jokeLi = $jokeList.getElementsByTagName("li")
+        const $recipeLi = $recipeList.getElementsByTagName("li")
 
         if ($adviceLi.length===0 && $quoteLi.length===0 && $jokeLi.length===0 && $recipeLi.length===0) {
           $favHeader.className = "hidden"
@@ -244,7 +244,7 @@ document.addEventListener("click",function(event){
           $recipeList.firstElementChild.className="hidden"
         }
 
-        var $toDoLi=$toDoList.getElementsByTagName("li")
+        const $toDoLi=$toDoList.getElementsByTagName("li")
 
         if ($toDoLi.length===0){
           $toDoHeader.className="hidden"
@@ -256,7 +256,7 @@ document.addEventListener("click",function(event){
     document.querySelector("#overlay").remove()
 
   } else if (event.target.matches("#reload")){
-    var type=document.querySelector("#api-data").firstElementChild.getAttribute("id")
+    const type=document.querySelector("#api-data").firstElementChild.getAttribute("id")
 
     if (type==="advice"){
       while (document.querySelector("#api-data").firstElementChild){
@@ -306,44 +306,44 @@ document.addEventListener("DOMContentLoaded", function(event){
     addedList=userAddedList
     swap("home")
 
-    for (var i=0;i<userAddedList.favorites.length;i++){
+    for (let i=0;i<userAddedList.favorites.length;i++){
       if (userAddedList.favorites[i].type==="advice"){
-        var text=userAddedList.favorites[i].text
-        var author=userAddedList.favorites[i].author
+        const text=userAddedList.favorites[i].text
+        const author=userAddedList.favorites[i].author
         $adviceList.appendChild(renderLi(text,author))
 
       } else if (userAddedList.favorites[i].type==="quote"){
-        var text = userAddedList.favorites[i].text
-        var author = userAddedList.favorites[i].author
+        const text = userAddedList.favorites[i].text
+        const author = userAddedList.favorites[i].author
         $quoteList.appendChild(renderLi(text, author))
 
       } else if (userAddedList.favorites[i].type==="joke"){
-        var text = userAddedList.favorites[i].text
-        var author = userAddedList.favorites[i].author
+        const text = userAddedList.favorites[i].text
+        const author = userAddedList.favorites[i].author
         $jokeList.appendChild(renderLi(text, author))
 
       } else if (userAddedList.favorites[i].type==="recipe"){
-        var text=userAddedList.favorites[i].text
-        var url=userAddedList.favorites[i].url
+        const text=userAddedList.favorites[i].text
+        const url=userAddedList.favorites[i].url
         $recipeList.appendChild(renderRecipeLi(text,url))
       }
     }
 
-    for (var i=0;i<userAddedList.toDos.length;i++){
-      var text = userAddedList.toDos[i].text
+    for (let i=0;i<userAddedList.toDos.length;i++){
+      const text = userAddedList.toDos[i].text
       $toDoList.appendChild(renderCheckLi(text))
     }
 
-    var $checkbox=document.querySelectorAll(".checkbox")
-    for (var i =0;i<$checkbox.length;i++){
+    const $checkbox=document.querySelectorAll(".checkbox")
+    for (let i =0;i<$checkbox.length;i++){
       $checkbox[i].checked=userAddedList.toDos[i].isComplete
     }
   }
 
-  var $adviceLi = $adviceList.getElementsByTagName("li")
-  var $quoteLi = $quoteList.getElementsByTagName("li")
-  var $jokeLi = $jokeList.getElementsByTagName("li")
-  var $recipeLi = $recipeList.getElementsByTagName("li")
+  const $adviceLi = $adviceList.getElementsByTagName("li")
+  const $quoteLi = $quoteList.getElementsByTagName("li")
+  const $jokeLi = $jokeList.getElementsByTagName("li")
+  const $recipeLi = $recipeList.getElementsByTagName("li")
 
   if ($adviceLi.length>0 || $quoteLi.length>0 || $jokeLi.length>0 || $recipeLi.length>0){
     $favHeader.className = "header narrow"
@@ -362,7 +362,7 @@ document.addEventListener("DOMContentLoaded", function(event){
     $recipeList.firstElementChild.className="hidden"
   }
 
-  var $toDoLi=$toDoList.getElementsByTagName("li")
+  const $toDoLi=$toDoList.getElementsByTagName("li")
 
   if ($toDoLi.length>0){
     $toDoHeader.className="header narrow"
@@ -372,8 +372,8 @@ document.addEventListener("DOMContentLoaded", function(event){
 })
 
 $toDoList.addEventListener("change",function(event){
-  var todoText=event.target.getAttribute("id")
-  for (var i=0;i<addedList.toDos.length;i++){
+  const todoText=event.target.getAttribute("id")
+  for (let i=0;i<addedList.toDos.length;i++){
     if (addedList.toDos[i].text===todoText){
       addedList.toDos[i].isComplete=event.target.checked
       localStorage.setItem("addedList",JSON.stringify(addedList))
@@ -382,25 +382,25 @@ $toDoList.addEventListener("change",function(event){
 })
 
 function renderLi (text,author){
-  var $li = document.createElement("li")
+  const $li = document.createElement("li")
   $li.setAttribute("id","fav-li")
 
-  var $pDiv=document.createElement("div")
+  const $pDiv=document.createElement("div")
   $li.appendChild($pDiv)
 
-  var $pText=document.createElement("p")
+  const $pText=document.createElement("p")
   $pText.textContent=text
   $pDiv.appendChild($pText)
 
-  var $pAuthor=document.createElement("p")
+  const $pAuthor=document.createElement("p")
   $pAuthor.textContent=author
   $pDiv.appendChild($pAuthor)
 
-  var $delDiv = document.createElement("div")
+  const $delDiv = document.createElement("div")
   $delDiv.setAttribute("class", "del-div")
   $li.appendChild($delDiv)
 
-  var $delete=document.createElement("i")
+  const $delete=document.createElement("i")
   $delete.setAttribute("class","fas fa-trash")
   $delete.setAttribute("id","delete")
   $delDiv.appendChild($delete)
@@ -409,31 +409,31 @@ function renderLi (text,author){
 }
 
 function renderCheckLi (text){
-  var $li = document.createElement("li")
+  const $li = document.createElement("li")
   $li.setAttribute("class","check-li")
   $li.setAttribute("id","check-li")
 
-  var $divLi=document.createElement("div")
+  const $divLi=document.createElement("div")
   $divLi.setAttribute("class","div-li")
   $li.appendChild($divLi)
 
-  var $checkbox=document.createElement("input")
+  const $checkbox=document.createElement("input")
   $checkbox.setAttribute("type","checkbox")
   $checkbox.setAttribute("id",text)
   $checkbox.setAttribute("class","checkbox")
   $divLi.appendChild($checkbox)
 
-  var $label=document.createElement("label")
+  const $label=document.createElement("label")
   $label.setAttribute("for",text)
   $label.setAttribute("class","label")
   $label.textContent=text
   $divLi.appendChild($label)
 
-  var $delDiv=document.createElement("div")
+  const $delDiv=document.createElement("div")
   $delDiv.setAttribute("class","del-div")
   $li.appendChild($delDiv)
 
-  var $delete=document.createElement("i")
+  const $delete=document.createElement("i")
   $delete.setAttribute("class","fas fa-trash")
   $delete.setAttribute("id","delete")
   $delDiv.appendChild($delete)
@@ -442,27 +442,27 @@ function renderCheckLi (text){
 }
 
 function renderRecipeLi (text,url){
-  var $li = document.createElement("li")
+  const $li = document.createElement("li")
   $li.setAttribute("id", "fav-li")
 
-  var $linkDiv = document.createElement("div")
+  const $linkDiv = document.createElement("div")
   $li.appendChild($linkDiv)
 
-  var $link = document.createElement("a")
+  const $link = document.createElement("a")
   $link.setAttribute("target","_blank")
   $link.setAttribute("class","recipe")
   $link.setAttribute("href",url)
   $linkDiv.appendChild($link)
 
-  var $pText = document.createElement("p")
+  const $pText = document.createElement("p")
   $pText.textContent = text
   $link.appendChild($pText)
 
-  var $delDiv = document.createElement("div")
+  const $delDiv = document.createElement("div")
   $delDiv.setAttribute("class", "del-div")
   $li.appendChild($delDiv)
 
-  var $delete = document.createElement("i")
+  const $delete = document.createElement("i")
   $delete.setAttribute("class", "fas fa-trash")
   $delete.setAttribute("id", "delete")
   $delDiv.appendChild($delete)
@@ -471,29 +471,29 @@ function renderRecipeLi (text,url){
 }
 
 function renderModal(){
-  var $divOverlay=document.createElement("div")
+  const $divOverlay=document.createElement("div")
   $divOverlay.setAttribute("class","overlay")
   $divOverlay.setAttribute("id","overlay")
 
-  var $divModal=document.createElement("div")
+  const $divModal=document.createElement("div")
   $divModal.setAttribute("class","modal")
   $divOverlay.appendChild($divModal)
 
-  var $h2=document.createElement("h2")
+  const $h2=document.createElement("h2")
   $h2.setAttribute("class","modal-message")
   $h2.textContent="Are You Sure You Want To Delete?"
   $divModal.appendChild($h2)
 
-  var $divModalIcons=document.createElement("div")
+  const $divModalIcons=document.createElement("div")
   $divModalIcons.setAttribute("class","modal-icons")
   $divModal.appendChild($divModalIcons)
 
-  var $delete=document.createElement("i")
+  const $delete=document.createElement("i")
   $delete.setAttribute("class","fas fa-trash modal-icon")
   $delete.setAttribute("id","delete-confirm")
   $divModalIcons.appendChild($delete)
 
-  var $undo=document.createElement("i")
+  const $undo=document.createElement("i")
   $undo.setAttribute("class","fas fa-undo modal-icon")
   $undo.setAttribute("id","undo")
   $divModalIcons.appendChild($undo)
@@ -502,18 +502,18 @@ function renderModal(){
 }
 
 function renderSpinner(){
-  var $spinner=document.createElement("div")
+  const $spinner=document.createElement("div")
   $spinner.className="spinner"
 
-  var $bounce1 = document.createElement("div")
+  const $bounce1 = document.createElement("div")
   $bounce1.className="bounce1"
   $spinner.appendChild($bounce1)
 
-  var $bounce2=document.createElement("div")
+  const $bounce2=document.createElement("div")
   $bounce2.className="bounce2"
   $spinner.appendChild($bounce2)
 
-  var $bounce3=document.createElement("div")
+  const $bounce3=document.createElement("div")
   $bounce3.className="bounce3"
   $spinner.appendChild($bounce3)
 
