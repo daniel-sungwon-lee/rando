@@ -84,10 +84,16 @@ p{
   transition: all 0.5s ease-out;
 }
 
-@media screen and (max-width:370px){
+@media screen and (max-width:610px){
   header{
     justify-content: center;
   }
+  .header.narrow{
+    margin: 0 1rem;
+  }
+}
+
+@media screen and (max-width:370px){
   .header.narrow{
     margin: 0 0.5rem;
   }
