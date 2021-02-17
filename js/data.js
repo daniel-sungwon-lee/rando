@@ -4,6 +4,7 @@ const $apiData = document.querySelector("#api-data")
 function getAdvice(){
   const xhr = new XMLHttpRequest()
   xhr.open("GET", "https://api.adviceslip.com/advice")
+  xhr.onerror = () => alert("A network error has occured; please check your connection")
   xhr.addEventListener("load",()=>{
     const data = JSON.parse(xhr.response)
     let {slip:{advice}}=data
@@ -23,6 +24,7 @@ function getAdvice(){
 function getFamousQuote(){
   const xhr = new XMLHttpRequest()
   xhr.open("GET","https://quote-garden.herokuapp.com/api/v3/quotes/random")
+  xhr.onerror = () => alert("A network error has occured; please check your connection")
   xhr.addEventListener("load",()=>{
     const data = JSON.parse(xhr.response)
     let {data:dataArr}=data
@@ -50,6 +52,7 @@ function getDadJoke(){
   const xhr = new XMLHttpRequest()
   xhr.open("GET", "https://icanhazdadjoke.com/")
   xhr.setRequestHeader("Accept","application/json")
+  xhr.onerror = () => alert("A network error has occured; please check your connection")
   xhr.addEventListener("load",()=>{
     const data = JSON.parse(xhr.response)
     let {joke}=data
@@ -69,6 +72,7 @@ function getDadJoke(){
 function getActivity(){
   const xhr = new XMLHttpRequest()
   xhr.open("GET", "https://www.boredapi.com/api/activity/")
+  xhr.onerror = () => alert("A network error has occured; please check your connection")
   xhr.addEventListener("load",()=>{
     const data = JSON.parse(xhr.response)
     let {activity}=data
@@ -88,6 +92,7 @@ function getActivity(){
 function getRecipe(){
   const xhr = new XMLHttpRequest()
   xhr.open("GET", "https://www.themealdb.com/api/json/v1/1/random.php")
+  xhr.onerror = () => alert("A network error has occured; please check your connection")
   xhr.addEventListener("load",()=>{
     const data = JSON.parse(xhr.response)
     let {meals}=data
