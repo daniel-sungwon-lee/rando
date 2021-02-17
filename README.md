@@ -6,6 +6,10 @@ The Random App for Needing Data Output, RANDO is a web application created using
 ## **Link to Live Demo:**
 https://daniel-sungwon-lee.github.io/ajax-project/
 
+## **Walkthrough GIFs (Desktop/Mobile):**
+![rando-desktop-compressed](https://user-images.githubusercontent.com/72715781/108257614-e548c180-7113-11eb-8e33-7e0cdfa5f1aa.gif)
+
+![rando-mobile-walkthrough](https://user-images.githubusercontent.com/72715781/108257318-753a3b80-7113-11eb-8300-58559ceb835c.gif)
 
 ## **Current Features:**
 * User can get a random advice by clicking button
