@@ -40,6 +40,9 @@ button:hover{
   border: solid #D6EDFF;
   cursor: pointer;
 }
+.top-button{
+  margin-top: 0;
+}
 .api-data{
   border: solid #CED4DA;
   border-radius: 30px;
