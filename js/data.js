@@ -23,7 +23,7 @@ function getAdvice(){
 
 function getFamousQuote(){
   const xhr = new XMLHttpRequest()
-  xhr.open("GET","https://quote-garden.herokuapp.com/api/v3/quotes/random")
+  xhr.open("GET","https://quote-garden.onrender.com/api/v3/quotes/random")
   xhr.onerror = () => alert("A network error has occured; please check your connection")
   xhr.addEventListener("load",()=>{
     const data = JSON.parse(xhr.response)
